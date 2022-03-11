@@ -7,11 +7,10 @@ import Page1 from './pages/Page1';
 function App({ user }) {
   return (
     <Routes>
-      <Route path="example" element={<Home/>}>
-        <Route path="home" element={<Home/>}/>
-        <Route path="dashboard" element={<Dashboard/>}/>
-        <Route path="page-1" element={<Page1/>}/>
-      </Route>
+      <Route path="example/dashboard" element={<Dashboard/>}/>
+      <Route path="example/home" element={<Home/>}/>
+      <Route path="example" element={<Home/>}/>
+      <Route path="example/page-1" element={<Page1/>}/>
     </Routes>
   );
 }

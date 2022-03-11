@@ -17,6 +17,7 @@ window.renderExampleService = (containerId, history, user, setServiceMenu) => {
   );
 };
 
+
 window.unmountExampleService = () => {
   //stop all async code here
 };
