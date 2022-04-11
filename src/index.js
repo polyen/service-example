@@ -1,25 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
 import serviceMenu from './data/serviceMenu';
-import { BrowserRouter } from 'react-router-dom';
-import { routes } from './data/routes';
 
-window.renderExampleService = (containerId, history, user, setServiceMenu) => {
-  setServiceMenu(serviceMenu, routes);
-  ReactDOM.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <App user={user}/>
-      </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById(containerId)
-  );
+
+const getRemoteEntryUrl = () => {
+  if (window.location.hostname === "console.cirrentsystems.com")
+    return "https://consolev3.cirrentsystems.com";
+  else return "https://consolev3.stg.cirrentsystems.com";
 };
 
+window.frameworkUrl = getRemoteEntryUrl();
 
-window.unmountExampleService = () => {
-  //stop all async code here
+window.initExampleService = (props) => {
+  const {
+    idContainer, registerSideMenu, injectReducer, theme,
+  } = props;
+  window.cirrentModuleContainerId = idContainer;
+  registerSideMenu(serviceMenu);
+  import('./bootstrap')
+    .then(() => window.renderExampleService({ injectReducer, theme }))
+    .catch((e) => {
+      console.log(e)
+    });
 };
-
-
