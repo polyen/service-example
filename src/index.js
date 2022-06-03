@@ -11,10 +11,9 @@ window.frameworkUrl = getRemoteEntryUrl();
 
 window.initExampleService = (props) => {
   const {
-    idContainer, registerSideMenu, injectReducer, theme,
+    idContainer, injectReducer, theme,
   } = props;
   window.cirrentModuleContainerId = idContainer;
-  registerSideMenu(serviceMenu);
   import('./bootstrap')
     .then(() => window.renderExampleService({ injectReducer, theme }))
     .catch((e) => {
